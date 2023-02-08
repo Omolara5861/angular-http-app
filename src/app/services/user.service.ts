@@ -40,7 +40,7 @@ export class UserService {
         age: user.dob.age,
         phone: user.phone,
         profileSrc: user.picture.medium,
-        address: `${user.location.street.number}, ${user.location.street.name}, ${user.location.city}, ${user.location.state}, ${user.location.country}.`,
+        address: `${user.location.street.number}, ${user.location.street.name}, ${user.location.country}.`,
         latitude: user.location.coordinates.latitude,
         longitude: user.location.coordinates.longitude
       }))
