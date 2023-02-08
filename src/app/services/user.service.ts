@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { User } from '../interfaces/user';
+import { Response } from '../interfaces/response';
 
 @Injectable({
   providedIn: 'root'
@@ -11,11 +12,38 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  getUsers(size = 10): Observable<User[]> {
-    return this.http.get<User[]>(`${this.baseUrl}?results=${size}`);
+  getUsers(size = 10): Observable<Response> {
+    return this.http.get<Response>(`${this.baseUrl}?results=${size}`)
+    .pipe(
+      map(response => this.processResponse(response))
+    );
   }
 
-  getUser(uuid: number): Observable<User> {
-    return this.http.get<User>(`${this.baseUrl}uuid=${uuid}`);
+  getUser(uuid: number): Observable<Response> {
+    return this.http.get<Response>(`${this.baseUrl}uuid=${uuid}`)
+    .pipe(
+      map(response => this.processResponse(response))
+    );
+  }
+
+
+  private processResponse(response: Response): Response {
+    return {
+      info: {...response.info},
+      results: response.results.map((user: any) => (<User>{
+        uuid: user.login.uuid,
+        firstName: user.name.first,
+        lastName: user.name.last,
+        gender: user.gender,
+        email: user.email,
+        dob: user.dob.date,
+        age: user.dob.age,
+        phone: user.phone,
+        profileSrc: user.picture.medium,
+        address: `${user.location.street.number}, ${user.location.street.name}, ${user.location.city}, ${user.location.state}, ${user.location.country}.`,
+        latitude: user.location.coordinates.latitude,
+        longitude: user.location.coordinates.longitude
+      }))
+    }
   }
 }
