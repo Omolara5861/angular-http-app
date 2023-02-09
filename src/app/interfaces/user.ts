@@ -3,6 +3,7 @@ export interface User {
     uuid: string;
     firstName: string;
     lastName: string;
+    username: string;
     gender: string;
     address: string;
     email: string;

@@ -19,8 +19,8 @@ export class UserService {
     );
   }
 
-  getUser(uuid: number): Observable<CustomResponse> {
-    return this.http.get<CustomResponse>(`${this.baseUrl}uuid=${uuid}`)
+  getUser(uuid: string): Observable<CustomResponse> {
+    return this.http.get<CustomResponse>(`${this.baseUrl}?uuid=${uuid}`)
     .pipe(
       map(this.processResponse)
     );
@@ -34,6 +34,7 @@ export class UserService {
         uuid: user.login.uuid,
         firstName: user.name.first,
         lastName: user.name.last,
+        username: user.login.username,
         gender: user.gender,
         email: user.email,
         dob: user.dob.date,
