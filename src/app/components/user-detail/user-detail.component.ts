@@ -6,11 +6,12 @@ import { User } from '../../interfaces/user';
 import  * as Leaflet  from 'leaflet';
 import { Coordinates } from '../../interfaces/coordinates';
 
-/** */
+/** @Mode enum that stores the constant mode/state for the user details form*/
 enum Mode {
   Edit = 'edit',
   Locked = 'locked'
 }
+
 
 type BtnText = 'edit' | 'save changes';
 
