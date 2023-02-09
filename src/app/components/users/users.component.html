@@ -1,4 +1,4 @@
-<section class="card">
+<section class="card" *ngIf="usersArray">
   <div class="card-body">
       <h5>Random User API</h5>
       <p class="card-text">Seed: {{usersArray.info.seed}}</p>
@@ -7,7 +7,7 @@
   </div>
 </section>
 <br>
-<section>
+<section *ngIf="usersArray">
   <table class="table table-striped">
     <caption>This table displays random users information fetched from <a target="_blank" href="https://randomuser.me/">Random User Generator</a> API </caption>
     <thead class="table-light">
