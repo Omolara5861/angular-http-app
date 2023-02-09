@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { User } from '../interfaces/user';
-import { Response } from '../interfaces/response';
+import { CustomResponse } from '../interfaces/response';
 
 @Injectable({
   providedIn: 'root'
@@ -12,22 +12,22 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  getUsers(size = 10): Observable<Response> {
-    return this.http.get<Response>(`${this.baseUrl}?results=${size}`)
+  getUsers(size = 10): Observable<CustomResponse> {
+    return this.http.get<CustomResponse>(`${this.baseUrl}?results=${size}`)
     .pipe(
-      map(response => this.processResponse(response))
+      map(this.processResponse)
     );
   }
 
-  getUser(uuid: number): Observable<Response> {
-    return this.http.get<Response>(`${this.baseUrl}uuid=${uuid}`)
+  getUser(uuid: number): Observable<CustomResponse> {
+    return this.http.get<CustomResponse>(`${this.baseUrl}uuid=${uuid}`)
     .pipe(
-      map(response => this.processResponse(response))
+      map(this.processResponse)
     );
   }
 
 
-  private processResponse(response: Response): Response {
+  private processResponse(response: CustomResponse): CustomResponse {
     return {
       info: {...response.info},
       results: response.results.map((user: any) => (<User>{

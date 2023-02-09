@@ -1,5 +1,5 @@
 import { Info } from './info';
-export interface Response {
+export interface CustomResponse {
   results: any[];
   info: Info;
 }

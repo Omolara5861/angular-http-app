@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/interfaces/user';
 import { UserService } from '../../services/user.service';
-import { Response } from '../../interfaces/response';
+import {CustomResponse } from '../../interfaces/response';
 
 @Component({
   selector: 'app-users',
@@ -10,7 +10,7 @@ import { Response } from '../../interfaces/response';
 })
 export class UsersComponent implements OnInit {
 
-usersArray: Response;
+usersArray: CustomResponse;
 
   constructor(private userService: UserService) {}
   ngOnInit(): void {
