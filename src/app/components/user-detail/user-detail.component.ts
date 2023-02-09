@@ -3,6 +3,13 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 import { CustomResponse } from '../../interfaces/response';
 
+enum Mode {
+  Edit = 'edit',
+  Locked = 'locked'
+}
+
+type BtnText = 'edit' | 'save changes';
+
 @Component({
   selector: 'app-user-detail',
   templateUrl: './user-detail.component.html',
@@ -11,8 +18,8 @@ import { CustomResponse } from '../../interfaces/response';
 export class UserDetailComponent implements OnInit {
 
   user: CustomResponse;
-  btnText: 'edit' | 'save changes' = 'edit';
-  mode: 'edit' | 'locked' = 'locked';
+  btnText: BtnText = 'edit';
+  mode: Mode = Mode.Locked;
 
   constructor(private route: ActivatedRoute, private userService: UserService) { }
 
@@ -23,7 +30,7 @@ export class UserDetailComponent implements OnInit {
   }
 
   onChangeMode(): void {
-    this.mode=  this.mode === 'edit' ? 'locked' : 'edit';
+    this.mode=  this.mode === 'edit' ? Mode.Locked : Mode.Edit;
     this.btnText = this.mode === 'edit' ? 'save changes': 'edit';
   }
 }
