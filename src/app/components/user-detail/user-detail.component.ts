@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 import { CustomResponse } from '../../interfaces/response';
+import { User } from '../../interfaces/user';
 
 enum Mode {
   Edit = 'edit',
@@ -17,16 +18,17 @@ type BtnText = 'edit' | 'save changes';
 })
 export class UserDetailComponent implements OnInit {
 
-  user: CustomResponse;
+  user: User;
   btnText: BtnText = 'edit';
   mode: Mode = Mode.Locked;
 
-  constructor(private route: ActivatedRoute, private userService: UserService) { }
+  constructor(private activatedRoute: ActivatedRoute, private userService: UserService) { }
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe((params: ParamMap) => {
-      this.userService.getUser(params.get('uuid')!).subscribe((user: CustomResponse) => this.user = user);
-    })
+    // this.route.paramMap.subscribe((params: ParamMap) => {
+    //   this.userService.getUser(params.get('uuid')!).subscribe((user: User) => this.user = user);
+    // })
+    this.user = (<User>(this.activatedRoute.snapshot.data['resolvedUser'].results[0]));
   }
 
   onChangeMode(): void {
