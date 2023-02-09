@@ -11,6 +11,5 @@ export interface User {
     age: number;
     phone: string;
     profileSrc: string;
-    latitude: Coordinates;
-    longitude: Coordinates;
+    coordinates: Coordinates;
 }

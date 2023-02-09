@@ -42,8 +42,7 @@ export class UserService {
         phone: user.phone,
         profileSrc: user.picture.medium,
         address: `${user.location.street.number}, ${user.location.street.name}, ${user.location.country}.`,
-        latitude: user.location.coordinates.latitude,
-        longitude: user.location.coordinates.longitude
+        coordinates: {latitude: +user.location.coordinates.latitude, longitude: +user.location.coordinates.longitude}
       }))
     }
   }
