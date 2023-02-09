@@ -12,6 +12,7 @@ export class UserDetailComponent implements OnInit {
 
   user: CustomResponse;
   btnText: 'edit' | 'save changes' = 'edit';
+  mode: 'edit' | 'locked' = 'locked';
 
   constructor(private route: ActivatedRoute, private userService: UserService) { }
 
@@ -21,4 +22,8 @@ export class UserDetailComponent implements OnInit {
     })
   }
 
+  onChangeMode(): void {
+    this.mode=  this.mode === 'edit' ? 'locked' : 'edit';
+    this.btnText = this.mode === 'edit' ? 'save changes': 'edit';
+  }
 }
