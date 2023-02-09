@@ -6,6 +6,7 @@ import { User } from '../../interfaces/user';
 import  * as Leaflet  from 'leaflet';
 import { Coordinates } from '../../interfaces/coordinates';
 
+/** */
 enum Mode {
   Edit = 'edit',
   Locked = 'locked'
@@ -48,8 +49,9 @@ export class UserDetailComponent implements OnInit {
     this.btnText = this.mode === 'edit' ? 'save changes': 'edit';
   }
 
-
+/** Method that creates the map from @leaflet library.*/
   private loadMap(coordinate: Coordinates): void {
+    /** */
     const map = Leaflet.map('map', {
       center: [coordinate.latitude, coordinate.longitude],
       zoom: 8
