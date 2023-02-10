@@ -32,7 +32,7 @@ export class UserService {
    * @return returns the user that matches the query passed to @baseUrl
    */
   getUser(uuid: string): Observable<CustomResponse> {
-    return this.http.get<CustomResponse>(`${this.baseUrl}uuid=${uuid}`)
+    return this.http.get<CustomResponse>(`${this.baseUrl}?uuid=${uuid}`)
     .pipe(
       /** RXJS function / method that calls @processResponse and passes the response returned by @getUser function by default */
       map(this.processResponse)
