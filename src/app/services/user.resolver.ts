@@ -15,6 +15,7 @@ export class UserResolver implements Resolve<CustomResponse> {
 
   constructor(private userService: UserService){}
 
+  /** Resolves the user details data returned */
   resolve(route: ActivatedRouteSnapshot, _: RouterStateSnapshot): Observable<CustomResponse> {
     return this.userService.getUser(route.paramMap.get('uuid')!);
   }

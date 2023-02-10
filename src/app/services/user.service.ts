@@ -8,25 +8,41 @@ import { CustomResponse } from '../interfaces/response';
   providedIn: 'root'
 })
 export class UserService {
+  /** The ApI endpoint used for this application
+   * @readonly keyword makes @baseUrl Immutable
+  */
   readonly baseUrl = 'https://randomuser.me/api/';
 
   constructor(private http: HttpClient) { }
 
+  /** This method returns a specific number of users from @baseUrl
+   * @param size specifies the number of users to return
+    */
   getUsers(size = 10): Observable<CustomResponse> {
     return this.http.get<CustomResponse>(`${this.baseUrl}?results=${size}`)
     .pipe(
+      /** RXJS function / method that calls @processResponse with the response returned by the parent function @getUsers */
       map(this.processResponse)
     );
   }
 
+  /**
+   * This method returns a specific user from @baseUrl
+   * @param uuid identifies / specifies the user to retrieve from the API
+   * @return returns the user that matches the query passed to @baseUrl
+   */
   getUser(uuid: string): Observable<CustomResponse> {
     return this.http.get<CustomResponse>(`${this.baseUrl}?uuid=${uuid}`)
     .pipe(
+      /** RXJS function / method that calls @processResponse and passes the response returned by @getUser function by default */
       map(this.processResponse)
     );
   }
 
-
+/** This method Processes the data (users / user) that @baseUrl returns. @info is copied from the one the API returned so the data remains the same but @result property is mapped and casted to @User shape. So it doesn't return all the properties the API sends but the ones defined in the user shape/interface
+ * @param response represents the API response
+ * @private makes this method only accessible in this class
+*/
   private processResponse(response: CustomResponse): CustomResponse {
     return {
       info: {...response.info},
