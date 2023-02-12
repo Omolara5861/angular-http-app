@@ -9,6 +9,7 @@
   - [Installation](#installation)
   - [Usage](#usage)
   - [Technical Details / Technologies](#technical-details--technologies)
+  - [Contributing](#contributing)
 
 ## Introduction
 The User Catalog project is a web application built using Angular (HTTP Concepts)that displays a list of users and their details fetched from **[Random User Generator][1]**. This project is designed / created to demonstrate my knowledge of Angular HTTP requests. The requested data was manipulated / transformed using RXJS map operator. The following concepts were used to create this application:
@@ -102,3 +103,7 @@ This project was built with VS Code using Angular version 15 and makes use of th
 + Leaflet for displaying users' location on a map
 + RxJs for handling HTTP requests and responses
 
+## Contributing
+If you would like to contribute to this project, please open an issue or submit a pull request on the project's GitHub repo. Contributions are welcome and appreciated.
+
+<!-- ## License -->
