@@ -6,6 +6,7 @@
   - [Preview](#preview)
   - [Features](#features)
   - [Project To-do](#project-to-do)
+  - [Installation](#installation)
 
 ## Introduction
 The User Catalog project is a web application built using Angular (HTTP Concepts)that displays a list of users and their details fetched from **[Random User Generator][1]**. This project is designed / created to demonstrate my knowledge of Angular HTTP requests. The requested data was manipulated / transformed using RXJS map operator. The following concepts were used to create this application:
@@ -57,3 +58,31 @@ User Details Page
 
 - [ ] To Implement Dark Mode
 - [ ] To add CORS Interceptor
+
+
+## Installation
+To install and run the User Catalog project, you will need to have the following software installed on your computer:
+
+- Node.js
+- Angular CLI
+
+Once you have the required software installed, follow these steps to get started:
+
+1. Clone the repository on your local machine using the following command:
+
+```
+git clone https://github.com/Omolara5861/angular-http-app.git
+```
+
+2. Navigate to the project directory using the following command:
+
+```
+cd angular-http-app.git
+```
+3. Install the required dependencies and run the development server using the following command:
+
+```
+npm install && ng serve
+```
+4.  Access the project by opening a web browser and navigating to `http://localhost:4200/`
+
