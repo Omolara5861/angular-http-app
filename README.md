@@ -4,6 +4,8 @@
   - [Table of contents](#table-of-contents)
   - [Introduction](#introduction)
   - [Preview](#preview)
+  - [Features](#features)
+  - [Project To-do](#project-to-do)
 
 ## Introduction
 The User Catalog project is a web application built using Angular (HTTP Concepts)that displays a list of users and their details fetched from **[Random User Generator][1]**. This project is designed / created to demonstrate my knowledge of Angular HTTP requests. The requested data was manipulated / transformed using RXJS map operator. The following concepts were used to create this application:
@@ -45,3 +47,13 @@ User Details Page
 ![The details' page of a user with more information about them and their location on a map](/src/assets/details-page.png "User Details Page")
 
 
+## Features
+
+* View a list of users
+* View the details of a specific user
+* View users location on a map
+
+## Project To-do
+
+- [ ] To Implement Dark Mode
+- [ ] To add CORS Interceptor
