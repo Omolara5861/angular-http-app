@@ -61,6 +61,7 @@ User Details Page
 
 - [ ] To Implement Dark Mode
 - [ ] To add CORS Interceptor
+- [ ] To write unit tests
 
 
 ## Installation
