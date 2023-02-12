@@ -3,6 +3,7 @@
 - [Angular HTTP User Catalog](#angular-http-user-catalog)
   - [Table of contents](#table-of-contents)
   - [Introduction](#introduction)
+  - [Preview](#preview)
 
 ## Introduction
 The User Catalog project is a web application built using Angular (HTTP Concepts)that displays a list of users and their details fetched from **[Random User Generator][1]**. This project is designed / created to demonstrate my knowledge of Angular HTTP requests. The requested data was manipulated / transformed using RXJS map operator. The following concepts were used to create this application:
@@ -33,4 +34,14 @@ The User Catalog project is a web application built using Angular (HTTP Concepts
 **Note:** This project does not perform the full CRUD operations, it only reads and imitates the update operation. The API used does not support Create, Update, and Delete operations
 
 [1]: <https://randomuser.me> "A free open-source API for generating random users and detailed information about them"
+
+## Preview
+Homepage
+
+![The homepage that shows the request info and displays the users fetched from the API in a table](/src/assets/homepage.png "Project Homepage")
+
+User Details Page
+
+![The details' page of a user with more information about them and their location on a map](/src/assets/details-page.png "User Details Page")
+
 
