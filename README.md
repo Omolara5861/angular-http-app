@@ -42,6 +42,7 @@ The User Catalog project is a web application built using Angular (HTTP Concepts
 [1]: <https://randomuser.me> "A free open-source API for generating random users and detailed information about them"
 
 ## Preview
+
 Homepage
 
 ![The homepage that shows the request info and displays the users fetched from the API in a table](/src/assets/homepage.png "Project Homepage")
@@ -50,6 +51,7 @@ User Details Page
 
 ![The details' page of a user with more information about them and their location on a map](/src/assets/details-page.png "User Details Page")
 
+[View Project](https://angular-http-app.vercel.app "Live link")
 
 ## Features
 
