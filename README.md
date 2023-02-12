@@ -35,11 +35,11 @@ The User Catalog project is a web application built using Angular (HTTP Concepts
 + RxJs
   + Observables
   + Map Operator
-+ [Leaflet Map](https://leafletjs.com/ "A Javascript open-source library for mobile-friendly interactive maps")
++ [Leaflet Map](https://external.ink?to=/leafletjs.com/ "A Javascript open-source library for mobile-friendly interactive maps")
 
 **Note:** This project does not perform the full CRUD operations, it only reads and imitates the update operation. The API used does not support Create, Update, and Delete operations
 
-[1]: <https://randomuser.me> "A free open-source API for generating random users and detailed information about them"
+[1]: <https://external.ink?to=/randomuser.me> "A free open-source API for generating random users and detailed information about them"
 
 ## Preview
 
@@ -51,7 +51,7 @@ User Details Page
 
 ![The details' page of a user with more information about them and their location on a map](/src/assets/details-page.png "User Details Page")
 
-[View Project](https://angular-http-app.vercel.app "Live link")
+[View Project](https://external.ink?to=/angular-http-app.vercel.app "Live link")
 
 ## Features
 
