@@ -26,7 +26,7 @@ import { CorsInterceptor } from './interceptor/cors.interceptor';
     {
       provide: HTTP_INTERCEPTORS,
       useClass: CorsInterceptor,
-      multi: false
+      multi: true
     }
   ],
   bootstrap: [AppComponent]
