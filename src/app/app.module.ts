@@ -2,12 +2,14 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
-import {  HttpClientModule} from '@angular/common/http';
+import {  HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 
 // Components
 import { AppComponent } from './app.component';
 import { UsersComponent } from './components/users/users.component';
 import { UserDetailComponent } from './components/user-detail/user-detail.component';
+import { CorsInterceptor } from './interceptor/cors.interceptor';
+
 
 @NgModule({
   declarations: [
@@ -20,7 +22,13 @@ import { UserDetailComponent } from './components/user-detail/user-detail.compon
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: CorsInterceptor,
+      multi: false
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
