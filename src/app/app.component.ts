@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Users Catalog';
+
+  isDarkMode: boolean;
+
+  onColorThemeChanged(): void {
+  }
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-toggle',
@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class ToggleComponent {
 
+  @Input() isMode: boolean;
+  @Output() toggle = new EventEmitter<unknown>();
+
+  onToggleClicked(): void {
+    this.toggle.emit();
+  }
 }
