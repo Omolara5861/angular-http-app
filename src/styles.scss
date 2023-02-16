@@ -1,2 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~leaflet/dist/leaflet.css";
+
+.dark-mode {
+  background-color: #121212;
+  color: #F5F5F5;
+}
+
+.card{
+  color: #212529;
+}
