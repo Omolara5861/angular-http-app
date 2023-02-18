@@ -62,7 +62,7 @@ User Details Page
 
 ## Project To-do
 
-- [ ] To Implement Dark Mode
+- [x] To Implement Dark Mode
 - [x] To add CORS Interceptor
 - [ ] To write unit tests
 
