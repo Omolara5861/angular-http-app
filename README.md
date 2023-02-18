@@ -23,6 +23,10 @@ The User Catalog project is a web application built using Angular (HTTP Concepts
 + Angular Directives
   + Built-in Directives
   + Structural Directives
++ Angular Decorators
+   + @Input
+   + @Output
+   + Event Emitter
 + Angular Services
 + Angular resolver
 + Angular HTTP Interceptor
@@ -62,7 +66,7 @@ User Details Page
 
 ## Project To-do
 
-- [ ] To Implement Dark Mode
+- [x] To Implement Dark Mode
 - [x] To add CORS Interceptor
 - [ ] To write unit tests
 
