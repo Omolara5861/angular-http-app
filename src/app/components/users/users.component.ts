@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/interfaces/user';
 import { UserService } from '../../services/user.service';
 import { CustomResponse } from '../../interfaces/response';
+import { ThemeService } from '../../services/theme-color.service';
 
 @Component({
   selector: 'app-users',
@@ -10,12 +11,18 @@ import { CustomResponse } from '../../interfaces/response';
 })
 export class UsersComponent implements OnInit {
 
+  isDarkMode: boolean;
+
 /** An array that stores the users returned by the API */
 usersArray: CustomResponse;
 
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService, private themeService:ThemeService) {}
 
   ngOnInit(): void {
+    this.isDarkMode = this.themeService.isDarkMode();
+    console.log(this.isDarkMode);
+
+
     /**Call the getUsers method in the user service with 8 so the API would return 8 users.  If successful, the users fetched @users would be stored in the @userArray but if there is an error, it would be logged to the console*/
     this.userService.getUsers(8).subscribe(
       (users: CustomResponse) => {

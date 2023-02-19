@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ThemeColorService } from './theme-color.service';
+import { ThemeService } from './theme-color.service';
 
 describe('ThemeColorService', () => {
-  let service: ThemeColorService;
+  let service: ThemeService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(ThemeColorService);
+    service = TestBed.inject(ThemeService);
   });
 
   it('should be created', () => {
