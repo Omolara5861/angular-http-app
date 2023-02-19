@@ -22,7 +22,7 @@ usersArray: CustomResponse;
         this.usersArray = users;
       },
       err => console.log(err),
-      () => console.log(`Complete Fetching users from Randomusers.me API`)
+      () => console.log(`Complete Fetching ${this.usersArray.results.length} users from Random Users Generator`)
     )
   }
 }
