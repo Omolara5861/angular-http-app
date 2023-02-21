@@ -15,10 +15,6 @@ export class ThemeService {
     this.getTheme();
   }
 
-  isDarkMode(): boolean {
-    return this._theme$.value === 'dark-mode';
-  }
-
   // Set the theme and update it in local storage and the BehaviorSubject
   setTheme(theme: string): void {
     try {
@@ -42,9 +38,15 @@ export class ThemeService {
   applyTheme(theme: string): void {
     if (theme === 'dark-mode') {
       document.body.classList.add('dark-mode');
+      document.getElementById('table')!.classList.add('table-dark');
     } else {
       document.body.classList.remove('dark-mode');
+      document.getElementById('table')!.classList.remove('table-dark');
     }
+  }
+
+  isDarkMode(): boolean {
+    return this._theme$.value === 'dark-mode';
   }
 }
 

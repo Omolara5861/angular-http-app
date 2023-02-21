@@ -16,12 +16,13 @@ export class UsersComponent implements OnInit {
 /** An array that stores the users returned by the API */
 usersArray: CustomResponse;
 
-  constructor(private userService: UserService, private themeService:ThemeService) {}
+  constructor(private userService: UserService, private themeService:ThemeService) {
+    themeService.getTheme();
+    this.isDarkMode = themeService.isDarkMode();
+  }
 
   ngOnInit(): void {
     this.isDarkMode = this.themeService.isDarkMode();
-    console.log(this.isDarkMode);
-
 
     /**Call the getUsers method in the user service with 8 so the API would return 8 users.  If successful, the users fetched @users would be stored in the @userArray but if there is an error, it would be logged to the console*/
     this.userService.getUsers(8).subscribe(
