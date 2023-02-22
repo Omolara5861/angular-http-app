@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ThemeColorService } from './services/theme-color.service';
+import { ThemeService } from './services/theme-color.service';
 
 @Component({
   selector: 'app-root',
@@ -11,15 +11,19 @@ export class AppComponent {
 
   isDarkMode: boolean;
 
-  constructor(private themeColor: ThemeColorService) {
-    themeColor.initTheme();
-    this.isDarkMode = themeColor.isDarkMode();
+  constructor(private themeService: ThemeService) {
+    themeService.getTheme();
+    this.isDarkMode = themeService.isDarkMode();
+
   }
 
-  onColorThemeChanged(): void {
-    this.isDarkMode = this.themeColor.isDarkMode();
-    this.isDarkMode
-      ? this.themeColor.updateTheme('light-mode')
-      : this.themeColor.updateTheme('dark-mode');
+
+  // Toggle the theme between light and dark modes
+
+
+  public toggleTheme(): void {
+    const theme = this.themeService._theme$.value === 'light-mode' ? 'dark-mode' : 'light-mode';
+    this.themeService.setTheme(theme);
+    this.themeService.applyTheme(theme);
   }
 }

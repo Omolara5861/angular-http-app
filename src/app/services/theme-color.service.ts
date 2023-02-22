@@ -1,51 +1,52 @@
-import { Injectable, Renderer2, RendererFactory2 } from '@angular/core';
+import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ThemeColorService {
+export class ThemeService {
+  // Create a BehaviorSubject to store and update the theme
+  readonly _theme$: BehaviorSubject<string> = new BehaviorSubject<string>('light-mode');
+  // Expose the theme as an observable
+  public readonly theme$ = this._theme$.asObservable();
 
-  private colorTheme: string;
-  private renderer: Renderer2;
-
-  constructor(rendererFactory: RendererFactory2) {
-    this.renderer = rendererFactory.createRenderer(null, null);
-  }
-
-    /** This method calls @getTheme() to retrieve the current theme, then adds that theme to the body element of the DOM */
-  initTheme() {
+  constructor() {
+    // Get the current theme from local storage on initialization
     this.getTheme();
-    this.renderer.addClass(document.body, this.colorTheme);
   }
 
-  /** This method returns a boolean based on whether the current theme is 'dark-mode' */
-  isDarkMode(): boolean {
-    return this.colorTheme === 'dark-mode';
+  // Set the theme and update it in local storage and the BehaviorSubject
+  setTheme(theme: string): void {
+    try {
+      localStorage.setItem('user-theme', theme);
+      this._theme$.next(theme);
+    } catch (error) {
+      console.error(`Failed to set theme: ${error}`);
+    }
   }
 
- /** The setTheme() method sets the colorTheme variable to the passed-in theme, and stores the theme in local storage using @localStorage.setItem(). */
-  private setTheme(theme: 'light-mode'| 'dark-mode'): void {
-    this.colorTheme = theme;
-    localStorage.setItem('user-theme', theme);
-  }
-
-  /** The getTheme() method retrieves the theme from local storage using localStorage.getItem(), and sets colorTheme to the retrieved value. If no theme is found in local storage, it defaults to 'light-mode'. */
+  // Get the theme from local storage and update the BehaviorSubject
   getTheme(): void {
-    if(localStorage.getItem('user-theme')) {
-      this.colorTheme = localStorage.getItem('user-theme')!;
-    }
-    else {
-      this.colorTheme = 'light-mode';
+    try {
+      const theme = localStorage.getItem('user-theme') ?? 'light-mode';
+      this._theme$.next(theme);
+    } catch (error) {
+      console.error(`Failed to get theme: ${error}`);
     }
   }
 
-  /** The updateTheme() method calls setTheme() to update the theme in both colorTheme and local storage, then removes the previous theme class from the body using renderer.removeClass(), and adds the new theme class using renderer.addClass(). */
+  applyTheme(theme: string): void {
+    if (theme === 'dark-mode') {
+      document.body.classList.add('dark-mode');
+      document.getElementById('table')!.classList.add('table-dark');
+    } else {
+      document.body.classList.remove('dark-mode');
+      document.getElementById('table')!.classList.remove('table-dark');
+    }
+  }
 
-  updateTheme(theme: 'light-mode' | 'dark-mode'): void {
-    this.setTheme(theme);
-    const previousTheme = (theme === 'light-mode' ? 'dark-mode': 'light-mode');
-    this.renderer.removeClass(document.body, previousTheme);
-    this.renderer.addClass(document.body, theme);
+  isDarkMode(): boolean {
+    return this._theme$.value === 'dark-mode';
   }
 }
 
